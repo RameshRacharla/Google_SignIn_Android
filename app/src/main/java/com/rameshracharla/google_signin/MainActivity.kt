@@ -62,14 +62,12 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    //region User Google Sign-in and sign-out Code
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+            // The Task returned from this call is always completed, no need to attach a listener.
             val task = getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
@@ -88,7 +86,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(account: GoogleSignInAccount?) {
-        Log.d("TAG", "updateUI: " + account.toString())
         if (account != null) {
             tv_name.text = account.displayName
             tv_email.text = account.email
